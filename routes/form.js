@@ -5,7 +5,6 @@ const ReglasDeValidacion= require("../Validaciones/ReglasDeValidacion")
 
 router.get ("/", (req, res)=>{
     res.render("form")
-    
     })
      
     router.post("/",ReglasDeValidacion, async (req,res)=>{
@@ -19,14 +18,13 @@ router.get ("/", (req, res)=>{
           }
            
           const sendMailStatus = await transport.sendMail(emailMsg);
-          let sendMailFeeback= ""
           if (sendMailStatus.rejected.length){
-            sendMailFeeback="No pudimos enviar el formulario"
+            req.app.locals.sendMailFeeback="No pudimos enviar el formulario"
           } else {
-            sendMailFeeback= "Formulario enviado y recibido con éxito"
+            req.app.locals.sendMailFeeback= "Formulario enviado y recibido con éxito"
           }
 
-          res.render("form", {mensajeEnviado: sendMailFeeback})
+          res.redirect ("/")
         }
         );
 
