@@ -1,0 +1,17 @@
+<header>
+    <h1>API ENVIO DE MAILS</h1>
+</header>
+<main>
+<form class="form-register" action="/" method="post">
+    <h4>Formulario Registro</h4>
+    <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese su Nombre" autofocus value="{{formData.nombres}}">
+    <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese su Apellido" value="{{formData.apellidos}}">
+    <input class="controls" type="text" name="correo" id="correo" placeholder="Ingrese su Correo" value="{{formData.correo}}">
+    <textarea class="controls" name="message" id="message" cols="30" rows="10">{{formData.message}}</textarea>
+    {{mensajeEnviado}}
+    <input class="submit"  id="btnEnviar" type="submit"  value="Enviar" >
+  </form>
+  {{#each arrayErrors}}
+  <p class="form-register">{{msg}}</p>
+  {{/each}}
+</main>
